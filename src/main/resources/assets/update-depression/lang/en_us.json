@@ -1,0 +1,4 @@
+{
+  "commands.setsuppressedshulkerbox.notShulkerBox": "Block is not a shulker box",
+  "commands.setsuppressedshulkerbox.success": "Suppressed shulker box placed"
+}

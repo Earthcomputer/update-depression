@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "update-depression",
+  "version": "${version}",
+  "name": "Update Depression",
+  "description": "Utilities for update suppression",
+  "authors": [
+    "Earthcomputer"
+  ],
+  "contact": {
+    "website": "https://github.com/Earthcomputer/update-depression",
+    "repo": "https://github.com/Earthcomputer/update-depression"
+  },
+  "license": "MIT",
+  "icon": "assets/update-depression/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.earthcomputer.updatedepression.UpdateDepression"
+    ]
+  },
+  "mixins": [
+    "update-depression.mixins.json"
+  ],
+  "depends": {
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
