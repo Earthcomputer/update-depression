@@ -2,11 +2,13 @@ package net.earthcomputer.updatedepression;
 
 import com.google.gson.stream.JsonReader;
 import com.mojang.logging.LogUtils;
+import dev.xpple.betterconfig.api.ModConfigBuilder;
 import net.earthcomputer.updatedepression.command.UpdateDepressionCommands;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import org.slf4j.Logger;
 
 import java.io.BufferedReader;
@@ -35,13 +37,15 @@ public class UpdateDepression implements ModInitializer {
         }
     }
 
-    public static Component translatableWithFallback(String key, Object... args) {
+    public static MutableComponent translatableWithFallback(String key, Object... args) {
         return Component.translatableWithFallback(key, defaultTranslations.getOrDefault(key, key), args);
     }
 
     @Override
     public void onInitialize() {
         loadDefaultTranslations();
+
+        new ModConfigBuilder("updatedepression", UpdateDepressionConfig.class).build();
 
         CommandRegistrationCallback.EVENT.register((dispatcher, context, environment) -> UpdateDepressionCommands.register(dispatcher, context));
     }

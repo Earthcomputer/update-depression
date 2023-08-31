@@ -1,4 +1,6 @@
 {
   "commands.setsuppressedshulkerbox.notShulkerBox": "Block is not a shulker box",
-  "commands.setsuppressedshulkerbox.success": "Suppressed shulker box placed"
+  "commands.setsuppressedshulkerbox.success": "Suppressed shulker box placed",
+
+  "updatedepression.crashFix": "You caused a crash in server tick"
 }
