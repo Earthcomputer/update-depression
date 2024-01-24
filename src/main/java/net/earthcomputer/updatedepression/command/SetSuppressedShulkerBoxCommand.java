@@ -40,7 +40,7 @@ public class SetSuppressedShulkerBoxCommand {
         level.setBlock(pos, shulkerBox, Block.UPDATE_CLIENTS);
         level.setBlockEntity(((EntityBlock) Blocks.LECTERN).newBlockEntity(pos, shulkerBox));
 
-        source.sendSuccess(() -> UpdateDepression.translatableWithFallback("commands.setsuppressedshulkerbox.success"), true);
+        source.sendSuccess(UpdateDepression.translatableWithFallback("commands.setsuppressedshulkerbox.success"), true);
 
         return Command.SINGLE_SUCCESS;
     }
