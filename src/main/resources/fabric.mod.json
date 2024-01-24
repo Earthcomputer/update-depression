@@ -23,6 +23,7 @@
     "update-depression.mixins.json"
   ],
   "depends": {
+    "fabricloader": ">=0.15",
     "fabric-api": "*",
     "minecraft": "${minecraft_version}"
   }
