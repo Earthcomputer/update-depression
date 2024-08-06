@@ -1,6 +1,8 @@
 {
   "commands.setsuppressedshulkerbox.notShulkerBox": "Block is not a shulker box",
   "commands.setsuppressedshulkerbox.success": "Suppressed shulker box placed",
+  "commands.setnoisesuppressor.invalidBlock": "Block needs to have block entity and 'facing' property",
+  "commands.setnoisesuppressor.success": "Noise suppressor placed",
 
   "updatedepression.crashFix": "You caused a crash in server tick"
 }
