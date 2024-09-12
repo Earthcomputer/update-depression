@@ -8,4 +8,6 @@ public final class UpdateDepressionConfig {
 
     @Config
     public static boolean updateSuppressionCrashFix = false;
+    @Config
+    public static boolean reintroduceCCESuppression = false;
 }
