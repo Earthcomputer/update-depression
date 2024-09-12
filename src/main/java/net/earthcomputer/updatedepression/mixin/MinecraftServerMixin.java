@@ -1,5 +1,6 @@
 package net.earthcomputer.updatedepression.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.earthcomputer.updatedepression.UpdateDepression;
@@ -23,16 +24,28 @@ public abstract class MinecraftServerMixin {
 
 
     @WrapOperation(method = "tickChildren", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerLevel;tick(Ljava/util/function/BooleanSupplier;)V"))
-    private void addTryCatch(ServerLevel level, BooleanSupplier shouldKeepTicking, Operation<Void> original) {
+    private void addTryCatchLevel(ServerLevel level, BooleanSupplier shouldKeepTicking, Operation<Void> original) {
         if (UpdateDepressionConfig.updateSuppressionCrashFix) {
             try {
                 original.call(level, shouldKeepTicking);
             } catch (Throwable e) {
-                LOGGER.error("Caused a crash in server tick", e);
+                LOGGER.error("Caused a crash in level tick", e);
                 playerList.broadcastSystemMessage(UpdateDepression.translatableWithFallback("updatedepression.crashFix").withStyle(style -> style.withItalic(true).withColor(ChatFormatting.GRAY)), false);
             }
         } else {
             original.call(level, shouldKeepTicking);
+        }
+    }
+
+    @WrapMethod(method = "tickChildren")
+    private void addTryCatchAll(BooleanSupplier booleanSupplier, Operation<Void> original) {
+        if (UpdateDepressionConfig.updateSuppressionCrashFix) {
+            try {
+                original.call(booleanSupplier);
+            } catch (Throwable e) {
+                LOGGER.error("Caused a crash in server tick", e);
+                playerList.broadcastSystemMessage(UpdateDepression.translatableWithFallback("updatedepression.crashFix").withStyle(style -> style.withItalic(true).withColor(ChatFormatting.GRAY)), false);
+            }
         }
     }
 }
