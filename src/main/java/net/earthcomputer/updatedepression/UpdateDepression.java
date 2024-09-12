@@ -46,6 +46,7 @@ public class UpdateDepression implements ModInitializer {
         loadDefaultTranslations();
 
         new ModConfigBuilder("updatedepression", UpdateDepressionConfig.class).build();
+        UpdateDepressionConfig.computeValues();
 
         CommandRegistrationCallback.EVENT.register((dispatcher, context, environment) -> UpdateDepressionCommands.register(dispatcher, context));
     }

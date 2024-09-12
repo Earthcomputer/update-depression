@@ -23,7 +23,7 @@ public abstract class MinecraftServerMixin {
 
 
     @WrapOperation(method = "tickChildren", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerLevel;tick(Ljava/util/function/BooleanSupplier;)V"))
-    private void addTryCatch(ServerLevel level, BooleanSupplier shouldKeepTicking, Operation<Void> original) {
+    private void addTryCatchLevel(ServerLevel level, BooleanSupplier shouldKeepTicking, Operation<Void> original) {
         if (UpdateDepressionConfig.updateSuppressionCrashFix) {
             try {
                 original.call(level, shouldKeepTicking);
