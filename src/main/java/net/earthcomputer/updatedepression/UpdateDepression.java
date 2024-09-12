@@ -1,5 +1,6 @@
 package net.earthcomputer.updatedepression;
 
+import com.demonwav.mcdev.annotations.Translatable;
 import com.google.gson.stream.JsonReader;
 import com.mojang.logging.LogUtils;
 import dev.xpple.betterconfig.api.ModConfigBuilder;
@@ -37,7 +38,7 @@ public class UpdateDepression implements ModInitializer {
         }
     }
 
-    public static MutableComponent translatableWithFallback(String key, Object... args) {
+    public static MutableComponent translatableWithFallback(@Translatable(foldMethod = true) String key, Object... args) {
         return Component.translatableWithFallback(key, defaultTranslations.getOrDefault(key, key), args);
     }
 
