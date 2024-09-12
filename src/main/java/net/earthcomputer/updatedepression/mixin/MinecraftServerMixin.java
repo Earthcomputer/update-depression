@@ -46,6 +46,8 @@ public abstract class MinecraftServerMixin {
                 LOGGER.error("Caused a crash in server tick", e);
                 playerList.broadcastSystemMessage(UpdateDepression.translatableWithFallback("updatedepression.crashFix").withStyle(style -> style.withItalic(true).withColor(ChatFormatting.GRAY)), false);
             }
+        } else {
+            original.call(booleanSupplier);
         }
     }
 }
